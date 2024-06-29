@@ -1,0 +1,19 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model FunctionSchema {
+  arguments         Json?
+  createdAt         DateTime @default(now())
+  description       String?
+  id                String   @id @default(cuid())
+  name              String?
+  outputType        String?
+  requiredArguments Json?
+  updatedAt         DateTime @updatedAt
+}
